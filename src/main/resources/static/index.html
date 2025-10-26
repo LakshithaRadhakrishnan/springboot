@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Student</title>
+    <style>
+        body { font-family: Arial; background: #f0f0f0; padding: 20px; }
+        form { background: #fff; padding: 20px; border-radius: 8px; width: 300px; margin: auto; }
+        input { width: 100%; padding: 8px; margin: 5px 0; }
+        button { padding: 10px; width: 100%; background: #007bff; color: #fff; border: none; cursor: pointer; }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <h2>Add Student</h2>
+    <form id="studentForm">
+        <input type="text" id="name" placeholder="Name" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <button type="submit">Add Student</button>
+    </form>
+
+    <script>
+        const form = document.getElementById("studentForm");
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+
+            const response = await fetch("/students", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email })
+            });
+
+            const result = await response.json();
+            alert("Student added: " + result.name);
+            form.reset();
+        });
+    </script>
+</body>
+</html>

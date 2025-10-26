@@ -1,0 +1,26 @@
+# Java
+*.class
+*.jar
+*.war
+*.iml
+*.log
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
+
+# Spring Boot
+*.properties
+
+# IDE
+.vscode/
+.idea/
+
+# Environment files
+.env
+
+# Node or frontend
+node_modules/
